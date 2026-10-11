@@ -28,7 +28,14 @@ int main() {
     more->print();
 
     // ---- Part 2: your Uno scene goes below ----
+    std::unique_ptr<List<Player>> game = makeList<Player>();
 
+    game->addFront(new Player(1, "player 1"));
+    game->addFront(new Player(2, "player 2"));
+    game->addFront(new Player(3, "player 3"));
+    game->print();
+
+    
 
     return 0;
 }

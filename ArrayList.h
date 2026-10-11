@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "List.h"
+#include "Node.h"
 
 // Solution file. Lab 3's ArrayList plus addBack, getFront, isEmpty, size.
 
@@ -71,6 +72,65 @@ public:
             std::cout << *data_[i] << ",";
         }
         std::cout << std::endl;
+    }
+
+    void addAnywhere(int position, T* value) override {
+        if (position < 0 || position > size_) {
+            std::cout << "Position out of range." << std::endl;
+            return;
+        }
+        if (size_ >= CAPACITY) {
+            std::cout << "Full arraylist twin" << std::endl;
+            return;
+        }
+
+        for (int i = size_; i > position; i--) {
+            data_[i] = data_[i - 1];
+        }
+        data_[position] = value;
+        ++size_;
+    }
+
+    void deleteAnywhere(int position) override {
+        if (position < 0 || position >= size_ - 1) {
+            std::cout << "Position out of range." << std::endl;
+            return;
+        }
+        delete data_[position];
+
+        for (int i = position; i < size_ - 1; i++) {
+            data_[i] = data_[i + 1];
+        }
+        size_--;
+    }
+
+    void reverse() override {
+        int left = 0;
+        int right = size_ - 1;
+
+        while (left < right) {
+            std::swap(data_[left], data_[right]);
+            left++;
+            right--;
+        }
+    }
+
+    void concat(List<T>* other) override {
+        ArrayList<T>* otherList = dynamic_cast<ArrayList<T>*>(other);
+        if (otherList == nullptr) {
+            return;
+        }
+
+        if (size_ + otherList->size_ > CAPACITY) {
+            return;
+        }
+
+
+        for (int i = 0; i < otherList->size_; i++) {
+            data_[size_] = otherList->data_[i];
+            size_++;
+        }
+        otherList->size_ = 0;
     }
 
     ~ArrayList() override {
