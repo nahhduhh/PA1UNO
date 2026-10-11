@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include "Node.h"
-#include "List.h"
 
 // Solution file. Lab 3's LinkedList plus addBack, getFront, isEmpty, size.
 // tail_ is back so addBack is O(1). size_ is new so size() is O(1).
@@ -100,7 +99,7 @@ public:
         for (int i = 0; i < position - 1; i++) {
             current = current->next;
         }
-        fresh->next = current;
+        fresh->next = current->next;
         current->next = fresh;
         size_++;
     }

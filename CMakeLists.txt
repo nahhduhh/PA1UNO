@@ -4,4 +4,7 @@ project(PA1UNO)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(PA1UNO main.cpp
-        Stack.h)
+        Stack.h
+        Card.h
+        Card.cpp
+        Player.cpp)

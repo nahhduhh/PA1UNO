@@ -1,6 +1,7 @@
 #include <iostream>
 #include "List.h"
 #include "Player.h"
+#include "Card.h"
 
 int main() {
     // ---- Part 1: required test harness, do not modify ----
@@ -30,12 +31,40 @@ int main() {
     // ---- Part 2: your Uno scene goes below ----
     std::unique_ptr<List<Player>> game = makeList<Player>();
 
-    game->addFront(new Player(1, "player 1"));
-    game->addFront(new Player(2, "player 2"));
-    game->addFront(new Player(3, "player 3"));
+    game->addFront(new Player(1, "Wardell"));
+    game->addFront(new Player(2, "Deacon Blues"));
+    game->addFront(new Player(3, "Obama"));
     game->print();
 
-    
+    game->addAnywhere(1, new Player(4,"Nada"));
+    game->print();
+
+    game->reverse();
+    game->print();
+
+    game->deleteAnywhere(3);
+    game->print();
+
+    std::unique_ptr<List<Player>> newjoiners = makeList<Player>();
+    newjoiners->addFront(new Player(5,"IDK!!"));
+    newjoiners->addFront(new Player(6,"Mazda3 Hatchback"));
+    game->concat(newjoiners.get());
+    game->print();
+
+
+
+
+
+    Player* p1 = new Player(1, "player 1");
+    std::cout << *p1 << std::endl;
+    Card* c1 = new Card("Red" , "Skip");
+    Card* c2 = new Card("Blue", "7");
+
+    p1-> drawCard(c1);
+    p1-> drawCard(c2);
+
+    Card* played = p1->playCard();
+    std::cout << "player played a: " << *played << std::endl;
 
     return 0;
 }

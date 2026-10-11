@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+
+#include "Card.h"
 #include "Node.h"
 
 // A linked-list-backed stack. Reuses the same Node<T> the rest of the
