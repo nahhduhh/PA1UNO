@@ -78,7 +78,7 @@ public:
     void print() const override {
         Node<T>* current = head_;
         while (current != nullptr) {
-            std::cout << *current->data << ",";
+            std::cout << *current->data << ", ";
             current = current->next;
         }
         std::cout << std::endl;

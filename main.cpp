@@ -31,20 +31,25 @@ int main() {
     // ---- Part 2: your Uno scene goes below ----
     std::unique_ptr<List<Player>> game = makeList<Player>();
 
+    std::cout << "3 players enter the table" << std::endl;
     game->addFront(new Player(1, "Wardell"));
     game->addFront(new Player(2, "Deacon Blues"));
     game->addFront(new Player(3, "Obama"));
     game->print();
 
+    std::cout << "Nada gets added at position 1" << std::endl;
     game->addAnywhere(1, new Player(4,"Nada"));
     game->print();
 
-    game->reverse();
+    std::cout << "Reverse card gets played:" << std::endl;
+ // game->reverse();
     game->print();
 
+    std::cout << "Obama ragequits" << std::endl;
     game->deleteAnywhere(3);
     game->print();
 
+    std::cout << "players IDK!! and Mazda3 Hatchback join (shoutout my new car)" << std::endl;
     std::unique_ptr<List<Player>> newjoiners = makeList<Player>();
     newjoiners->addFront(new Player(5,"IDK!!"));
     newjoiners->addFront(new Player(6,"Mazda3 Hatchback"));
@@ -54,17 +59,21 @@ int main() {
 
 
 
-
+    std::cout << "new game with card.h and card.cpp!" << std::endl;
     Player* p1 = new Player(1, "player 1");
     std::cout << *p1 << std::endl;
-    Card* c1 = new Card("Red" , "Skip");
+    Player* p2 = new Player(2, "player 2");
+    Card* c1 = new Card("Blue", "Skip");
     Card* c2 = new Card("Blue", "7");
 
     p1-> drawCard(c1);
-    p1-> drawCard(c2);
+    p2-> drawCard(c2);
 
-    Card* played = p1->playCard();
-    std::cout << "player played a: " << *played << std::endl;
+    Card* played = p2->playCard();
+    std::cout << "player: " << *p2 << " played a: " << *played << std::endl;
+
+    played = p1->playCard();
+    std::cout << "player: " << *p1 << " played a: " << *played << ", unfortunate..." << std::endl;
 
     return 0;
 }

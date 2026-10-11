@@ -69,7 +69,7 @@ public:
 
     void print() const override {
         for (int i = 0; i < size_; ++i) {
-            std::cout << *data_[i] << ",";
+            std::cout << *data_[i] << ", ";
         }
         std::cout << std::endl;
     }
